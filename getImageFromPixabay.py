@@ -1,5 +1,6 @@
 from pixabay import Image
 import random
+import api_keys_config as cfg
 
 
 class FetchImage:
@@ -7,7 +8,7 @@ class FetchImage:
     def __init__(self, search_term):
         self.search_terms = search_term
         self.image_url = ""
-        self.api_key = ''
+        self.api_key = cfg.api_keys['pixabay']
 
     def fetch_image_path(self):
         image = Image(self.api_key)

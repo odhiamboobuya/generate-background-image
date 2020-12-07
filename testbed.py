@@ -2,6 +2,7 @@ from telegram.ext import Updater, CommandHandler, ConversationHandler, MessageHa
 from preprocessSearchItem import Preprocess
 from getImageFromPixabay import FetchImage
 from processImage import ProcessImage
+import api_keys_config as cfg
 
 
 def start(bot, update):
@@ -54,7 +55,7 @@ def stop(bot, update):
 
 
 def main():
-    updater = Updater('')
+    updater = Updater(cfg.api_keys['telegram'])
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('stop', stop))
