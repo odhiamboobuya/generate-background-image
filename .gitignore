@@ -1,3 +1,5 @@
 venv
 .idea
 __pycache__
+api_keys_config.py
+pics/
