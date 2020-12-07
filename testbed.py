@@ -41,11 +41,14 @@ def start2(bot, update):
         process_image = ProcessImage(image_path_string_array, string)
     downloaded_images_paths = process_image.download_images()
     for path in downloaded_images_paths:
-        generated_image_file = process_image.generate_images([path])
-        print(generated_image_file)
-        update.message.reply_text(
-            "Image {} of {}".format(downloaded_images_paths.index(path) + 1, len(downloaded_images_paths)))
-        bot.send_photo(chat_id=chat_id, photo=open(generated_image_file[0], 'rb'))
+        try:
+            generated_image_file = process_image.generate_images([path])
+            print(generated_image_file)
+            update.message.reply_text(
+                "Image {} of {}".format(downloaded_images_paths.index(path) + 1, len(downloaded_images_paths)))
+            bot.send_photo(chat_id=chat_id, photo=open(generated_image_file[0], 'rb'))
+        except Exception as e:
+            print("encountered error: {}".format(e))
     update.message.reply_text('Done. please paste the message again to repeat the search')
 
 
