@@ -59,7 +59,7 @@ class ProcessImage:
             if text_box_size[1] > max_box_size * img.size[1]:
                 initial_font_size -= 3
             text_box_size = img2.write_text_box((5, 0), text, box_width=image.size[0] - 10, font_filename=font_name,
-                                                font_size=initial_font_size, color=text_color, place="center")
+                                                font_size=initial_font_size, color=text_color, place="center", position='middle')
             credit_box_size = img.write_text_box((0, text_box_size[1] + initial_font_size), credit,
                                                  box_width=image.size[0] - 10, font_filename=font_name,
                                                  font_size=initial_credit_size, color=text_color)
