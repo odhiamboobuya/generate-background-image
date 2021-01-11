@@ -24,8 +24,13 @@ def start2(bot, update):
     if string.split('$$').__len__() == 3:
         credit = string.split('$$')[1]
         string_without_credit = string.replace('$$' + credit + '$$', '').strip()
-    main_script = Preprocess(string_without_credit)
-    keywords = main_script.get_key_words()
+    if string.split('##').__len__() == 3:
+        custom_keywords = string.split('##')[1]
+        string = string.replace('##' + custom_keywords + '##', '').strip()
+        keywords = custom_keywords.split(' ')
+    else:      
+        main_script = Preprocess(string_without_credit)
+        keywords = main_script.get_key_words()
     print(keywords)
     image_path = FetchImage(keywords)
     image_path_string_array = image_path.fetch_image_path()
